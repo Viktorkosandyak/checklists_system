@@ -1,0 +1,29 @@
+nav.navbar.navbar-expand-lg.navbar-light.us {
+  background-color: #22BCD4;
+}
+
+.logo {
+  font-size: 25px;
+  color: black;
+  font-weight: 600;
+  font-family: sans-serif;
+  padding-left: 30px;
+  font-size: bold;
+
+}
+
+ul.nav.navbar-nav.navigation li{
+  padding-left: 15px;
+}
+
+ul.nav.navbar-nav.navigation li a {
+  text-decoration: none;
+  color: black;
+                &:hover {
+                  color: red;
+                }
+}
+
+.alert.alert-notice,.alert.alert-alert {
+  background-color: #C0C0C0;
+}
