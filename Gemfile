@@ -20,6 +20,7 @@ gem 'slim'
 gem 'rubocop', '~> 0.60.0', require: false
 gem 'simple_form'
 gem 'pundit'
+gem 'annotate'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
