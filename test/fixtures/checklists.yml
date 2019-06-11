@@ -13,9 +13,20 @@
 #  project        :string
 #
 
-class Checklist < ApplicationRecord
-  belongs_to :user, optional: true
-  has_many :questions
-  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
-  # validates_presence_of :title
-end
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  project_id: 1
+  questiom_count: 1
+  status: MyString
+  date: 2019-06-07 21:42:32
+
+two:
+  title: MyString
+  description: MyText
+  project_id: 1
+  questiom_count: 1
+  status: MyString
+  date: 2019-06-07 21:42:32

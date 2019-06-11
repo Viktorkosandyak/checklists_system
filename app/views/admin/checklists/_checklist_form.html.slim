@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @checklist], html: {class: 'form-group'} do |f|
+  = f.input :title, label: 'Checklist title', error: 'Title is mandatory, please specify one'
+  = f.input :description, label: 'Checklist detailed description'
+  = f.simple_fields_for :questions do |question|
+    = render 'question_fields', f: question
+  .links
+    = link_to_add_association 'add question', f, :questions
+  = f.submit

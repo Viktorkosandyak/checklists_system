@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_08_090517) do
+ActiveRecord::Schema.define(version: 2019_06_10_061106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2019_06_08_090517) do
   create_table "checklists", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "questiom_count"
     t.string "status"
     t.datetime "date"
     t.bigint "user_id"
@@ -29,13 +28,13 @@ ActiveRecord::Schema.define(version: 2019_06_08_090517) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text "question"
+    t.text "title"
     t.text "description"
-    t.string "answer"
     t.text "comment"
     t.bigint "checklist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "answer"
     t.index ["checklist_id"], name: "index_questions_on_checklist_id"
   end
 

@@ -27,3 +27,12 @@ ul.nav.navbar-nav.navigation li a {
 .alert.alert-notice,.alert.alert-alert {
   background-color: #C0C0C0;
 }
+
+table.table-bordered {
+  text-align: center;
+                      td,th {
+                        min-width: 300px;
+                        max-width: 800px;
+                        height: 50px;
+                      }
+}

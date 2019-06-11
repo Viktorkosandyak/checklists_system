@@ -1,0 +1,9 @@
+= simple_form_for @checklist do |f|
+  = f.input :title, label: 'title please', error: 'Title is mandatory, please specify one'
+  = f.input :description, label: 'description please', error: 'Title is mandatory, please specify one'
+  = f.simple_fields_for :questions do |p|
+    = p.input :title
+    = p.input :description
+    = p.input :answer, :as => :select, :collection => Question.answers.keys
+    = p.input :comment
+  = f.button :submit

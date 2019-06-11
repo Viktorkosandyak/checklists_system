@@ -1,0 +1,30 @@
+.conatiner.mt-5
+  .col-lg-12.d-flex.justify-content-center
+    .row
+      = link_to 'Add checklist', new_admin_checklist_path, class: 'btn btn-secondary mr-3 ml-5 mb-3'
+      .col-lg-12
+        table.table-bordered
+          thead
+            tr
+              th[scope="col"]
+                | Name
+              th[scope="col"]
+                | Description
+              th[scope="col"]
+                | Status
+              th[scope="col"]
+                | Published
+              th[scope="col"]
+                | Actions
+          tbody
+            - @checklists.each.with_index(1) do |checklist, i|
+              tr
+                td = checklist.title
+                td = checklist.description
+                td = checklist.status
+                td = checklist.created_at
+                td
+                  = link_to 'edit', edit_admin_checklist_path(checklist.id), class: 'btn btn-secondary mr-3'
+                  = link_to 'show', admin_checklist_path(checklist.id),      class: 'btn btn-secondary mr-3 '
+                  = link_to 'delete', admin_checklist_path(checklist.id), method: :delete,                                            \
+                  data: { confirm: 'Are you sure?' } ,  class: 'btn btn-secondary mr-3 '

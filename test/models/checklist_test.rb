@@ -13,9 +13,10 @@
 #  project        :string
 #
 
-class Checklist < ApplicationRecord
-  belongs_to :user, optional: true
-  has_many :questions
-  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
-  # validates_presence_of :title
+require 'test_helper'
+
+class ChecklistTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
