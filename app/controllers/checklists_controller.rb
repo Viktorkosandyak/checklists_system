@@ -8,7 +8,7 @@ class ChecklistsController < ApplicationController
   end
 
   def index
-    @checklists  = Checklist.all
+    @checklists  = Checklist.all.by_parent
   end
 
   def show
@@ -42,7 +42,7 @@ class ChecklistsController < ApplicationController
   private
 
   def checklist_params
-    params.require(:checklist).permit(:title, :description, :project, :status, :date, questions_attributes: [:title, :description, :comment, :answer])
+    params.require(:checklist).permit(:title, :description, :project, :status, :date, :parent, questions_attributes: [:title, :description, :comment, :answer])
   end
 
   def set_checklist

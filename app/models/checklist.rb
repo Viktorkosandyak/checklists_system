@@ -18,4 +18,5 @@ class Checklist < ApplicationRecord
   has_many :questions
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
   # validates_presence_of :title
+  scope :by_parent, -> { where(parent: true) }
 end

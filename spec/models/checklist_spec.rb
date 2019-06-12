@@ -21,4 +21,9 @@ RSpec.describe Checklist , type: :model do
   #   expect(subject).to_not be_valid
   # end
 
+  it "applies a default scope to collections by departure ascending" do
+    expect(Checklist.all.by_parent).to eq Checklist.all.where(parent: true)
+  end
+
+
 end

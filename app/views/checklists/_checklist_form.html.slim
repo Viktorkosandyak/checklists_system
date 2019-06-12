@@ -6,4 +6,6 @@
     = p.input :description, label: 'Question title'
     = p.input :answer, :as => :select, :collection => Question.answers.keys, selected: 1
     = p.input :comment
-  = f.button :submit
+  = link_to 'back', checklists_path,                                            \
+  data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '
+  = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'

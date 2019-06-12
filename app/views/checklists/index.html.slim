@@ -21,10 +21,19 @@
             tr
               td = checklist.project
               td = checklist.title
-              td = checklist.created_at
+              td = checklist.created_at.to_s[0...-12]
               td = checklist.questions
               td
-                / = link_to 'edit', edit_checklist_path(checklist.id), class: 'btn btn-secondary mr-3'
-                = link_to 'show', checklist_path(checklist.id),      class: 'btn btn-secondary mr-3'
-                = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
-                data: { confirm: 'Are you sure?' } ,  class: 'btn btn-secondary mr-3'
+                nav.navbar.navbar-light.navbar-1.white
+                  a.navbar-brand href="#"
+                  button.navbar-toggler aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent15" data-toggle="collapse" type="button"
+                    span.navbar-toggler-icon
+                  #navbarSupportedContent15.collapse.navbar-collapse
+                    ul.navbar-nav.mr-auto
+                      li.nav-item
+                        a.nav-link  = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
+                        data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'
+                      li.nav-item
+                        a.nav-link  = link_to 'edit', edit_checklist_path(checklist.id), class: 'btn btn-danger'
+                      li.nav-item
+                        a.nav-link  = link_to 'show', checklist_path(checklist.id), class: 'btn btn-danger'
