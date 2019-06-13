@@ -23,6 +23,7 @@ gem 'pundit'
 gem 'annotate'
 gem 'faker'
 gem "cocoon"
+gem "chartkick"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

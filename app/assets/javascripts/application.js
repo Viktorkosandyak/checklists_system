@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require jquery3
 //= require popper
+//= require chartkick
+//= require Chart.bundle
 //= require cocoon
 //= require bootstrap-sprockets
 //= require activestorage

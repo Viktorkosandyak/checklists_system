@@ -17,6 +17,7 @@ class Admin::ChecklistsController < Admin::ApplicationController
 
   def create
     @checklist = Checklist.new(checklist_params)
+    @checklist.parent = true
     if @checklist.save
     redirect_to admin_checklists_path, success: "Checklist successfully create"
     else
@@ -48,7 +49,7 @@ class Admin::ChecklistsController < Admin::ApplicationController
   end
 
   def checklist_params
-    params.require(:checklist).permit(:title, :description, :project, :status, :date, questions_attributes: [:id, :title, :description, :_destroy])
+    params.require(:checklist).permit(:title, :description, :project, :status, :date, :parent, questions_attributes: [:id, :title, :description, :_destroy])
   end
 
   def set_checklist

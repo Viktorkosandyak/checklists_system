@@ -22,7 +22,7 @@
               td = checklist.project
               td = checklist.title
               td = checklist.created_at.to_s[0...-12]
-              td = checklist.questions
+              td = area_chart  Question.group(:answer).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
               td
                 nav.navbar.navbar-light.navbar-1.white
                   a.navbar-brand href="#"
