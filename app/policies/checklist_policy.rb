@@ -26,4 +26,9 @@ class ChecklistPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
+
+  def set_published?
+    user.admin?
+  end
+
 end

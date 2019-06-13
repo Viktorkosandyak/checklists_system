@@ -1,10 +1,6 @@
 = simple_form_for @checklist do |f|
-  = f.input :title, label: 'Checklist title', error: 'Title is mandatory, please specify one'
-  = f.input :description, label: 'Checklist description ', error: 'Title is mandatory, please specify one'
   = f.simple_fields_for :questions do |p|
-    = p.input :title, label: 'Question title'
-    = p.input :description, label: 'Question title'
-    = p.input :answer, :as => :select, :collection => Question.answers.keys, selected: 1
+    .style_select = p.input :answer, :as => :select, :collection => Question.answers.keys, selected: 1
     = p.input :comment
   = link_to 'back', checklists_path,                                            \
   data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '

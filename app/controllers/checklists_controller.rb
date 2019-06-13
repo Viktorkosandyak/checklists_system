@@ -8,7 +8,7 @@ class ChecklistsController < ApplicationController
   end
 
   def index
-    @checklists = Checklist.by_parent
+    @checklists = Checklist.by_parent.published
   end
 
   def show

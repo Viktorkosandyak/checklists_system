@@ -30,7 +30,6 @@ class Admin::ChecklistsController < Admin::ApplicationController
 
   def update
     if @checklist.update(checklist_params)
-          binding.pry
       redirect_to admin_checklist_path(@checklist.id), success: "Checklist successfully update"
     else
       render 'edit', danger: "Checklist not updated"
@@ -40,6 +39,12 @@ class Admin::ChecklistsController < Admin::ApplicationController
   def destroy
     @checklist.destroy
     redirect_to admin_checklists_path, danger: "Checklist successfully delete"
+  end
+
+  def set_published
+    @checklist = Checklist.find(params[:id])
+    @checklist.update_attributes(status: 'published')
+    redirect_to admin_checklists_path, success: "Checklist status successfully published"
   end
 
   private

@@ -22,9 +22,10 @@
                 td = checklist.title
                 td = checklist.description
                 td = checklist.status
-                td = checklist.created_at
+                td = Date.today.to_s.to_date
                 td
-                  = link_to 'edit', edit_admin_checklist_path(checklist.id), class: 'btn btn-secondary mr-3'
+                  = link_to 'published', admin_checklists_set_published_path(id: checklist.id), class: 'btn btn-secondary ml-3 mr-3'
+                  = link_to 'edit', edit_admin_checklist_path(checklist.id),      class: 'btn btn-secondary mr-3 '
                   = link_to 'show', admin_checklist_path(checklist.id),      class: 'btn btn-secondary mr-3 '
                   = link_to 'delete', admin_checklist_path(checklist.id), method: :delete,                                            \
                   data: { confirm: 'Are you sure?' } ,  class: 'btn btn-secondary mr-3 '

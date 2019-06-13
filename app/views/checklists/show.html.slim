@@ -3,29 +3,22 @@
     .row.justify-content-center
       .conatiner
           h3.d-flex.justify-content-center = @checklist.title
-          h6.d-flex.justify-content-center = @checklist.description
           br
-          table.table-bordered
+          h5.d-flex.justify-content-center = @checklist.description
+          br
+          table.table-bordered.two  width="2000"
             thead
               tr
+                th [scope="col"  width="20"]
+                  | #
                 th[scope="col"]
                   | Question title
                 th[scope="col"]
                   | Question description
-                th[scope="col"]
-                  | Answer
-                th[scope="col"]
-                  | comment
-                th[scope="col"]
-                  | Actions
             tbody
-              - @checklist.questions.each do |question|
+              - @checklist.questions.each.with_index(1) do |question, i|
                 tr
+                  th[scope="row"] = i
                   td.h6 = question.title
                   td.h6 = question.description
-                  td.h6 = question.answer
-                  td.h6 = question.comment
-                  td
-                    = link_to 'Edit', edit_checklist_path
-                    br
-                    = link_to 'Back', checklists_path
+          = render 'checklist_form'

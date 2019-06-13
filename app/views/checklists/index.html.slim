@@ -1,39 +1,39 @@
 .conatiner.mt-5
   .col-lg-12.d-flex.justify-content-center
     .row
-    .conatiner
       = link_to 'Fill checklist', new_checklist_path, class: 'btn btn-secondary mr-3 ml-5 mb-3'
-      table.table-bordered
-        thead
-          tr
-            th[scope="col"]
-              | Project
-            th[scope="col"]
-              | Checklist
-            th[scope="col"]
-              | Updated
-            th[scope="col"]
-              | Questions
-            th[scope="col"]
-              | Actions
-        tbody
-          - @checklists.each.with_index(1) do |checklist, i|
+      .col-lg-12
+        table.table-bordered 
+          thead
             tr
-              td = checklist.project
-              td = checklist.title
-              td = checklist.created_at.to_s[0...-12]
-              td = area_chart  Question.group(:answer).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
-              td
-                nav.navbar.navbar-light.navbar-1.white
-                  a.navbar-brand href="#"
-                  button.navbar-toggler aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent15" data-toggle="collapse" type="button"
-                    span.navbar-toggler-icon
-                  #navbarSupportedContent15.collapse.navbar-collapse
-                    ul.navbar-nav.mr-auto
-                      li.nav-item
-                        a.nav-link  = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
-                        data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'
-                      li.nav-item
-                        a.nav-link  = link_to 'edit', edit_checklist_path(checklist.id), class: 'btn btn-danger'
-                      li.nav-item
-                        a.nav-link  = link_to 'show', checklist_path(checklist.id), class: 'btn btn-danger'
+              th[scope="col"]
+                | Project
+              th[scope="col"]
+                | Checklist
+              th[scope="col"]
+                | Updated
+              th[scope="col"]
+                | Questions
+              th[scope="col"]
+                | Actions
+          tbody
+            - @checklists.each.with_index(1) do |checklist, i|
+              tr
+                td = checklist.project
+                td = checklist.title
+                td = Date.today.to_s.to_date
+                td = area_chart  Question.group(:answer).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
+                td
+                  nav.navbar.navbar-light.navbar-1.white
+                    a.navbar-brand href="#"
+                    button.navbar-toggler aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent15" data-toggle="collapse" type="button"
+                      span.navbar-toggler-icon
+                    #navbarSupportedContent15.collapse.navbar-collapse
+                      ul.navbar-nav.mr-auto
+                        li.nav-item
+                          a.nav-link  = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
+                          data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'
+                        li.nav-item
+                          a.nav-link  = link_to 'edit', edit_checklist_path(checklist.id), class: 'btn btn-danger'
+                        li.nav-item
+                          a.nav-link  = link_to 'show', checklist_path(checklist.id), class: 'btn btn-danger'
