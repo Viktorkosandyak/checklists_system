@@ -1,24 +1,21 @@
-.conatiner.mt-5
-  .col-lg-12
-    .row.justify-content-center
-      .conatiner
-          h3.d-flex.justify-content-center = @checklist.title
-          br
-          h5.d-flex.justify-content-center = @checklist.description
-          br
-          table.table-bordered.two  width="2000"
-            thead
-              tr
-                th [scope="col"  width="20"]
-                  | #
-                th[scope="col"]
-                  | Question title
-                th[scope="col"]
-                  | Question description
-            tbody
-              - @checklist.questions.each.with_index(1) do |question, i|
-                tr
-                  th[scope="row"] = i
-                  td.h6 = question.title
-                  td.h6 = question.description
-          = render 'checklist_form'
+.col-lg-12.mt-5
+  .row.justify-content-center
+    .conatiner
+      h3.d-flex.justify-content-center = @checklist.title
+      br
+      h5.d-flex.justify-content-center = @checklist.description
+      br
+      table.table-bordered.two
+        thead
+        tbody
+          = simple_form_for @checklist, method: :post, url: checklists_path do |f|
+            = f.hidden_field :id
+            = f.simple_fields_for :questions do |p|
+              - if p.index < @checklist.questions.count
+                = p.hidden_field :title
+                = p.hidden_field :description
+                .h2 = p.object.title
+                .style_select = p.input :answer, :as => :select, :collection => Question.answers.keys, selected: 1, label: "#{p.object.description}"
+                = p.input :comment
+            = link_to 'back', checklists_path, data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '
+            = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'

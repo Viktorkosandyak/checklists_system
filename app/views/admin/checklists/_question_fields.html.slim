@@ -1,5 +1,5 @@
 tr.nested-fields
   td
     = link_to_remove_association "remove question", f, data: { confirm: 'Are you sure, that you want to delete the question?' }, class: 'btn btn-danger btn-xs'
-  td= f.input :title, label: false
+  td= f.input :title, label: false, required: true
   td= f.input :description, label: false

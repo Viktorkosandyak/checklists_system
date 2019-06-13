@@ -1,6 +1,6 @@
 = simple_form_for [:admin, @checklist] do |f|
   .form-inputs
-    = f.input :title, label: 'Checklist title', error: 'Title is mandatory, please specify one'
+    = f.input :title, label: 'Checklist title', required: true , error: 'Title is mandatory, please specify one'
     = f.input :description, label: 'Checklist detailed description'
     = f.input :status, :as => :select, :collection => Checklist.statuses.keys, selected: 1
   h3.d-flex.justify-content-center Questions

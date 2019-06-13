@@ -13,7 +13,7 @@
 
 class Question < ApplicationRecord
   belongs_to :checklist
-  # validates :title,  presence: true, length: { minimum: 4 }
+  validates :title,  presence: true, length: { minimum: 4 }
 
   enum answer: { none: 0, yes: 1, no: 2, na: 3  }, _suffix: true
 end

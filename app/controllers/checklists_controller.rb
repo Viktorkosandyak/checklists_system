@@ -19,8 +19,21 @@ class ChecklistsController < ApplicationController
 
   def create
     @checklist = Checklist.new(checklist_params)
+
+    @child_checklist = Checklist.find(params[:checklist][:id]).dup
+    @child_checklist.parent_id = params[:checklist][:id]
+    @child_checklist.parent    = false
+    @child_checklist.save!
+
+    params[:checklist]["questions_attributes"].each do |question|
+      merged_question = question.last.merge({parent_id:  question.last['id'], checklist_id: @child_checklist.id})
+      new_question    = Question.new(merged_question.permit(:answer, :comment, :parent_id, :checklist_id, :title, :description))
+      new_question.save!
+    end
+
+    @checklist = Checklist.new(checklist_params)
     if @checklist.save
-    redirect_to checklists_path, success: "Checklist successfully create"
+    redirect_to checklists_path, success: "Checklist successfully fillinged"
     else
       render 'new', danger: "Checklist not updated"
     end
