@@ -15,7 +15,11 @@ class Question < ApplicationRecord
   belongs_to :checklist
   validates :title,  presence: true, length: { minimum: 4 }
   validates :comment,  presence: true, length: { minimum: 12 },
-   unless: Proc.new { |a| a.answer == 'none' }
-     
+   unless: Proc.new { |a| a.answer == 'none' || status_draft }
+
+  def status_draft
+    checklist.status == 'draft'
+  end
+
   enum answer: { none: 0, yes: 1, no: 2, na: 3  }, _suffix: true
 end

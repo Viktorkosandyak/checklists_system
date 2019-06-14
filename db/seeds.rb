@@ -10,5 +10,5 @@ end
 end
 
 20.times do
-  Question.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, checklist_id: Checklist.all.ids.sample)
+  Question.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, comment: Faker::Lorem.paragraph, checklist_id: Checklist.all.ids.sample)
 end
