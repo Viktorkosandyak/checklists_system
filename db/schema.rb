@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_192842) do
+ActiveRecord::Schema.define(version: 2019_06_14_145032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "comment"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "checklists", force: :cascade do |t|
     t.string "title"
@@ -25,8 +32,16 @@ ActiveRecord::Schema.define(version: 2019_06_13_192842) do
     t.string "project"
     t.boolean "parent", default: false
     t.integer "status"
-    t.integer "parent_id"
     t.index ["user_id"], name: "index_checklists_on_user_id"
+  end
+
+  create_table "forms", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "status"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -37,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_06_13_192842) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "answer"
-    t.integer "parent_id"
     t.index ["checklist_id"], name: "index_questions_on_checklist_id"
   end
 
