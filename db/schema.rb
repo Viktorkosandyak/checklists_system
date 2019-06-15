@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_115951) do
+ActiveRecord::Schema.define(version: 2019_06_15_180035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_06_15_115951) do
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "checklist_id"
     t.bigint "question_id"
+    t.bigint "checklist_id"
     t.index ["checklist_id"], name: "index_answers_on_checklist_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_115951) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "project"
+    t.string "project_uid"
     t.integer "status"
     t.bigint "form_id"
     t.index ["form_id"], name: "index_checklists_on_form_id"
