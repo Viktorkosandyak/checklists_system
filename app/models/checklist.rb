@@ -14,11 +14,9 @@
 #
 
 class Checklist < ApplicationRecord
-  belongs_to :user, optional: true
-  has_many :questions
-  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
+  belongs_to :form
+  has_many :answers
   validates_presence_of :title
-  scope :by_parent, -> { where(parent: true) }
   scope :published, -> { where(status: 'published') }
   enum status: { draft: 0, published: 1 }
 end

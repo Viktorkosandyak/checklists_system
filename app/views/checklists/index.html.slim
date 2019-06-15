@@ -11,8 +11,8 @@
                 | Checklist
               th[scope="col"]
                 | Updated
-              th[scope="col"]
-                | Questions
+              / th[scope="col"]
+              /   | Questions
               th[scope="col"]
                 | Actions
           tbody
@@ -21,7 +21,7 @@
                 td = checklist.project
                 td = checklist.title
                 td = Date.today.to_s.to_date
-                td = area_chart  Question.group(:answer).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
+                / td = area_chart  Question.group(:answer).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
                 td width="250px"
                   nav.navbar.navbar-light.navbar-1.white
                     a.navbar-brand href="#"

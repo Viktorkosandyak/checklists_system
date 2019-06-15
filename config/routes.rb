@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'checklists/set_published'
-    root to: 'checklists#index'
-    resources :checklists
+    get 'forms/set_published'
+    root to: 'forms#index'
+    resources :forms
   end
 
   resources :checklists

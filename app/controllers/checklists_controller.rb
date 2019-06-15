@@ -4,11 +4,10 @@ class ChecklistsController < ApplicationController
 
   def new
     @checklist = Checklist.new
-    @checklist.questions.build
   end
 
   def index
-    @checklists = Checklist.by_parent.published
+    @checklists = Checklist.published
   end
 
   def show
@@ -18,19 +17,6 @@ class ChecklistsController < ApplicationController
   end
 
   def create
-    @checklist = Checklist.new(checklist_params)
-
-    @child_checklist = Checklist.find(params[:checklist][:id]).dup
-    @child_checklist.parent_id = params[:checklist][:id]
-    @child_checklist.parent    = false
-    @child_checklist.save!
-
-    params[:checklist]["questions_attributes"].each do |question|
-      merged_question = question.last.merge({parent_id:  question.last['id'], checklist_id: @child_checklist.id})
-      new_question    = Question.new(merged_question.permit(:answer, :comment, :parent_id, :checklist_id, :title, :description))
-      new_question.save!
-    end
-
     @checklist = Checklist.new(checklist_params)
     if @checklist.save
     redirect_to checklists_path, success: "Checklist successfully fillinged"
@@ -55,7 +41,7 @@ class ChecklistsController < ApplicationController
   private
 
   def checklist_params
-    params.require(:checklist).permit(:title, :description, :project, :status, :date, :parent, questions_attributes: [:title, :description, :comment, :answer])
+    params.require(:checklist).permit(:title, :description, :project, :status, :date)
   end
 
   def set_checklist

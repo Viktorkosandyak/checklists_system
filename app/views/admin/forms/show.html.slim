@@ -3,18 +3,18 @@
     .row.justify-content-center
       .conatiner
           p
-            h2.strong Checklist Title:
-            ins = @checklist.title
+            h2.strong Form Title:
+            ins = @form.title
           p
-            h4.strong Checklist Text:
-            ins = @checklist.description
-            - @checklist.questions.each do |question|
+            h4.strong Form Text:
+            ins = @form.description
+            - @form.questions.each do |question|
               p
                 h4.strong Question title:
                 ins = question.title
               p
                 h6.strong Question Description:
                 ins = question.description
-          = link_to 'Edit', edit_admin_checklist_path
+          = link_to 'Edit', edit_admin_form_path
           br
-          = link_to 'Back', admin_checklists_path
+          = link_to 'Back', admin_forms_path

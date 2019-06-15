@@ -1,8 +1,8 @@
-= simple_form_for [:admin, @checklist] do |f|
+= simple_form_for [:admin, @form] do |f|
   .form-inputs
-    = f.input :title, label: 'Checklist title', required: true , error: 'Title is mandatory, please specify one'
-    = f.input :description, label: 'Checklist detailed description'
-    = f.input :status, :as => :select, :collection => Checklist.statuses.keys, selected: 1
+    = f.input :title, label: 'Form title', required: true , error: 'Title is mandatory, please specify one'
+    = f.input :description, label: 'Form detailed description'
+    = f.input :status, :as => :select, :collection => Form.statuses.keys, selected: 1
   h3.d-flex.justify-content-center Questions
   table.table
     thead
@@ -14,7 +14,7 @@
      = f.simple_fields_for :questions do |question|
        = render 'question_fields', f: question
     .form-actions
-      = link_to 'back', admin_checklists_path,                                            \
+      = link_to 'back', admin_forms_path,                                            \
       data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary ml-3 mb-3 '
       = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'
       = link_to_add_association 'add question', f, :questions, class: 'btn btn-primary ml-3 mb-3', data: { association_insertion_node: '.quest', association_insertion_method: :append }

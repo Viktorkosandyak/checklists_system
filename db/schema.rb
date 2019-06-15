@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_145032) do
+ActiveRecord::Schema.define(version: 2019_06_15_115951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,19 +20,22 @@ ActiveRecord::Schema.define(version: 2019_06_14_145032) do
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "checklist_id"
+    t.bigint "question_id"
+    t.index ["checklist_id"], name: "index_answers_on_checklist_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "checklists", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "date"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "project"
-    t.boolean "parent", default: false
     t.integer "status"
-    t.index ["user_id"], name: "index_checklists_on_user_id"
+    t.bigint "form_id"
+    t.index ["form_id"], name: "index_checklists_on_form_id"
   end
 
   create_table "forms", force: :cascade do |t|
@@ -42,17 +45,17 @@ ActiveRecord::Schema.define(version: 2019_06_14_145032) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_forms_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.text "title"
     t.text "description"
-    t.text "comment"
-    t.bigint "checklist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "answer"
-    t.index ["checklist_id"], name: "index_questions_on_checklist_id"
+    t.bigint "form_id"
+    t.index ["form_id"], name: "index_questions_on_form_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,4 +71,9 @@ ActiveRecord::Schema.define(version: 2019_06_14_145032) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "checklists"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "checklists", "forms"
+  add_foreign_key "forms", "users"
+  add_foreign_key "questions", "forms"
 end

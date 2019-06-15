@@ -4,11 +4,14 @@ User.create(email: 'admin@gmail.com', password: 'Admin1234!', password_confirmat
   User.create(email: Faker::Internet.email, password: Faker::Internet.password, admin: false)
 end
 
+10.times do
+  Form.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, status: 'published')
+end
 
 10.times do
-  Checklist.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, parent: true, status: 'published')
+  Checklist.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, status: 'published')
 end
 
 20.times do
-  Question.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, comment: Faker::Lorem.paragraph, checklist_id: Checklist.all.ids.sample)
+  Question.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, form_id: Form.all.ids.sample)
 end
