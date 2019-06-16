@@ -7,6 +7,7 @@ class ChecklistsController < ApplicationController
   end
 
   def index
+    @forms  = Form.all
     @checklists = Checklist.published
   end
 
@@ -34,7 +35,7 @@ class ChecklistsController < ApplicationController
   end
 
   def destroy
-    @checklist.destroy
+    @form.destroy
     redirect_to checklists_path, danger: "Checklist successfully delete"
   end
 

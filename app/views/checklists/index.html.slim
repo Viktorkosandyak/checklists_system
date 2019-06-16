@@ -5,8 +5,8 @@
         table.table-bordered
           thead
             tr
-              th[scope="col"]
-                | Project
+              / th[scope="col"]
+              /   | Project
               th[scope="col"]
                 | Checklist
               th[scope="col"]
@@ -16,10 +16,10 @@
               th[scope="col"]
                 | Actions
           tbody
-            - @checklists.each.with_index(1) do |checklist, i|
+            - @forms.each.with_index(1) do |form, i|
               tr
-                td = checklist.project
-                td = checklist.title
+                / td = form.project_uid
+                td = form.title
                 td = Date.today.to_s.to_date
                 / td = area_chart  Question.group(:answer).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
                 td width="250px"
@@ -30,7 +30,7 @@
                     #navbarSupportedContent15.collapse.navbar-collapse
                       ul.navbar-nav.mr-auto
                         li.nav-item
-                          a.nav-link  = link_to 'Fill checklist', checklist_path(checklist.id), class: 'btn btn-danger'
-                        li.nav-item
-                          a.nav-link  = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
-                          data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'
+                          a.nav-link  = link_to 'Fill checklist', new_checklist_path(form.id), class: 'btn btn-danger'
+                        / li.nav-item
+                        /   a.nav-link  = link_to 'delete', form_path(form.id), method: :delete,                                            \
+                        /   data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'
