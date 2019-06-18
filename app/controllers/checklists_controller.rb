@@ -1,10 +1,5 @@
 class ChecklistsController < ApplicationController
-  before_action :set_checklist, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
-  def new
-    @checklist = Checklist.new
-  end
 
   def index
     @forms  = Form.all
@@ -12,6 +7,9 @@ class ChecklistsController < ApplicationController
   end
 
   def show
+    @form = Form.find(params[:id])
+    @checklist = Checklist.new
+    @checklist.answers.build
   end
 
   def edit
@@ -42,11 +40,7 @@ class ChecklistsController < ApplicationController
   private
 
   def checklist_params
-    params.require(:checklist).permit(:title, :description, :project, :status, :date)
-  end
-
-  def set_checklist
-    @checklist = Checklist.find(params[:id])
+    params.require(:checklist).permit(:title, :description, :project_uid, :form_id, :date, answers_attributes: [:id, :value, :question_id])
   end
 
 end

@@ -17,6 +17,6 @@ class Checklist < ApplicationRecord
   belongs_to :form
   has_many :answers
   validates_presence_of :title
+  accepts_nested_attributes_for :answers
   scope :published, -> { where(status: 'published') }
-  enum status: { draft: 0, published: 1 }
 end

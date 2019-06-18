@@ -1,7 +1,0 @@
-= simple_form_for @checklist do |f|
-  = f.simple_fields_for :questions do |p|
-    .style_select = p.input :answer, :as => :select, :collection => Question.answers.keys, selected: 1
-    = p.input :comment, required: true, error: 'comment is mandatory, must be at least 12 characters long'
-  = link_to 'back', checklists_path,                                            \
-  data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '
-  = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'

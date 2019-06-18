@@ -1,4 +1,4 @@
-.col-lg-12.mt-5
+.col-lg-12.mt-5.ml-5
   .row.justify-content-center
     .conatiner
       h3.d-flex.justify-content-center = @checklist.title
@@ -9,13 +9,14 @@
         thead
         tbody
           = simple_form_for @checklist, method: :post, url: checklists_path do |f|
-            = f.hidden_field :id
-            = f.simple_fields_for :questions do |p|
-              - if p.index < @checklist.questions.count
-                = p.hidden_field :title
-                = p.hidden_field :description
-                .h2 = p.object.title
-                .style_select = p.input :answer, :as => :select, :collection => Question.answers.keys, selected: 1, label: "#{p.object.description}"
-                = p.input :comment
+            = f.hidden_field :title,       value: @form.title
+            = f.hidden_field :description, value: @form.description
+            = f.hidden_field :form_id,     value: @form.id
+            - @form.questions.each do |question|
+              = f.simple_fields_for :answers do |p|
+                = p.hidden_field :question_id, value: question.id
+                .d-flex.justify-content-center = p question.title
+                = p.input :value, label: question.description
+
             = link_to 'back', checklists_path, data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '
             = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'
