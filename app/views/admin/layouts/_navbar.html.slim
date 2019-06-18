@@ -1,5 +1,5 @@
 nav.navbar.navbar-expand-lg.navbar-light.us
-  a.navbar-brand.logo href="#{admin_root_url}" Form
+  a.navbar-brand.logo href="#{admin_root_url}" Forms
   button.navbar-toggler aria-controls="navbarNavDropdown" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNavDropdown" data-toggle="collapse" type="button"
     span.navbar-toggler-icon
   #navbarNavDropdown.collapse.navbar-collapse
@@ -9,6 +9,7 @@ nav.navbar.navbar-expand-lg.navbar-light.us
   ul.nav.navbar-nav.navigation
     - if user_signed_in?
       li.nav-item
+       li = link_to('Admin', admin_root_path)
        li = link_to('Logout', destroy_user_session_path, method: :delete)
        li = link_to current_user.email, edit_user_registration_path
     - else

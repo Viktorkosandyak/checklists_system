@@ -17,7 +17,7 @@ class ChecklistsController < ApplicationController
 
   def create
     @checklist = Checklist.new(checklist_params)
-    if @checklist.save
+    if @checklist.save!
     redirect_to checklists_path, success: "Checklist successfully fillinged"
     else
       render 'new', danger: "Checklist not updated"
@@ -33,14 +33,14 @@ class ChecklistsController < ApplicationController
   end
 
   def destroy
-    @form.destroy
+    @form.destroy!
     redirect_to checklists_path, danger: "Checklist successfully delete"
   end
 
   private
 
   def checklist_params
-    params.require(:checklist).permit(:title, :description, :project_uid, :form_id, :date, answers_attributes: [:id, :value, :question_id])
+    params.require(:checklist).permit(:title, :description, :project_uid, :form_id, :date, answers_attributes: [:id, :significance, :comment, :question_id])
   end
 
 end
