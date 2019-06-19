@@ -20,7 +20,7 @@ class ChecklistsController < ApplicationController
     if @checklist.save!
     redirect_to checklists_path, success: "Checklist successfully fillinged"
     else
-      render 'new', danger: "Checklist not updated"
+      render 'show', danger: "Checklist not updated"
     end
   end
 

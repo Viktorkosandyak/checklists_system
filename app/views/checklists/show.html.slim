@@ -18,6 +18,5 @@
                 .d-flex.justify-content-center = p question.title
                 = p.input :significance, :as => :select, :collection => Answer.significances.keys, selected: 0, label: question.description
                 = p.input :comment, required: true, error: 'comment is mandatory, must be at least 12 characters'
-
             = link_to 'back', checklists_path, data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '
             = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'
