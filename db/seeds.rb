@@ -1,6 +1,6 @@
 User.create(email: 'admin@gmail.com', password: 'Admin1234!', password_confirmation: 'Admin1234!', admin: true)
 
-5.times do
+3.times do
   User.create(email: Faker::Internet.email, password: Faker::Internet.password, admin: false)
 end
 
@@ -17,5 +17,5 @@ end
 end
 
 10.times do
-  Answer.create!(comment: Faker::Lorem.sentence(5), significance: 2, checklist_id: Checklist.all.ids.sample, question_id: Question.all.ids.sample)
+  Answer.create!(comment: Faker::Lorem.sentence(5), significance: Faker::Number.within(0..3), checklist_id: Checklist.all.ids.sample, question_id: Question.all.ids.sample)
 end

@@ -3,18 +3,18 @@
     .row.justify-content-center
       .conatiner
           p
-            h2.strong Form Title:
-            ins = @form.title
+            h2.strong.d-flex.justify-content-center Checklist Title:
+            h4.ins.d-flex.justify-content-center = @form.title
           p
-            h4.strong Form Text:
-            ins = @form.description
+            h4.strong Checklist Text:
+            h5.ins = @form.description
             - @form.questions.each do |question|
               p
                 h4.strong Question title:
-                ins = question.title
+                h6.ins = question.title
               p
-                h6.strong Question Description:
-                ins = question.description
+                h4.strong Question Description:
+                h6.ins = question.description
           = link_to 'Edit', edit_admin_form_path
           br
           = link_to 'Back', admin_forms_path

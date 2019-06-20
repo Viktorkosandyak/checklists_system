@@ -15,34 +15,14 @@
                 | Questions
               th[scope="col"]
                 | Actions
-              th[scope="col"]
-                | Actions
           tbody
             - @forms.each.with_index(1) do |form, i|
               tr
-                td  project
+                td  PRG1
                 td = form.title
                 td = Date.today.to_s.to_date
-                td = bar_chart  Answer.group(:significance).count , width: "300px", height: "100px", colors: ["#b00", "#666"]
-                td width="250px"
-                  nav.navbar.navbar-light.navbar-1.white
-                    a.navbar-brand href="#"
-                    button.navbar-toggler aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent15" data-toggle="collapse" type="button"
-                      span.navbar-toggler-icon
-                    #navbarSupportedContent15.collapse.navbar-collapse
-                      ul.navbar-nav.mr-auto
-                        li.nav-item
-                          a.nav-link  = link_to 'Fill checklist', checklist_path(form.id), class: 'btn btn-danger'
-                        / li.nav-item
-                        /   a.nav-link  = link_to 'delete', form_path(form.id), method: :delete,                                            \
-                        /   data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'
+                td.chartik = bar_chart  Answer.group(:significance).count, height: "100px"
                 td
-                  #nav-icon1
-                    span
-                    span
-                    span
-                    br
-                    br
-                    ul.navbar-nav.mr-auto
-                      li.nav-item
-                        a.nav-link  = link_to 'Fill checklist', checklist_path(form.id), class: 'btn btn-one'
+                  ul.navbar-nav.mr-auto
+                    li.nav-item
+                      a.nav-link  = link_to 'Fill checklist', checklist_path(form.id), class: 'btn btn-danger'

@@ -20,18 +20,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-  $('.btn.btn-one').hide();
-	$('#nav-icon1').click(function(){
-		$(this).toggleClass('open');
-    if ($(this).hasClass('open')) {
-    $('.btn.btn-one').show();
-  }
-    else {
-      $('.btn.btn-one').hide();
-    }
-  });
-  $('.hide').click(function(){
-  });
-});

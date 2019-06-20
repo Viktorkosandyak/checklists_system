@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :forms
   end
 
-  resources :checklists
+  resources :checklists, only: [:index, :show, :create]
   devise_for :users
   root to: "checklists#index"
 end

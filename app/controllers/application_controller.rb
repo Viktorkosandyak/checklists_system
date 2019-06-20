@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :success, :warning, :danger, :info
+  add_flash_types :success, :warning, :danger, :info, :error
 
   include Pundit
   protect_from_forgery

@@ -12,29 +12,13 @@ class ChecklistsController < ApplicationController
     @checklist.answers.build
   end
 
-  def edit
-  end
-
   def create
     @checklist = Checklist.new(checklist_params)
-    if @checklist.save!
-    redirect_to checklists_path, success: "Checklist successfully fillinged"
+    if @checklist.save
+      redirect_to checklists_path, success: "Checklist successfully fillinged"
     else
-      render 'show', danger: "Checklist not updated"
+      redirect_to checklist_path(@checklist.form_id), danger: "Checklist not updated"
     end
-  end
-
-  def update
-    if @checklist.update(checklist_params)
-      redirect_to @checklist, success: "Checklist successfully update"
-    else
-      render 'edit', danger: "Checklist not updated"
-    end
-  end
-
-  def destroy
-    @form.destroy!
-    redirect_to checklists_path, danger: "Checklist successfully delete"
   end
 
   private
