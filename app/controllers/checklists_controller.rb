@@ -17,7 +17,7 @@ class ChecklistsController < ApplicationController
     if @checklist.save
       redirect_to checklists_path, success: "Checklist successfully fillinged"
     else
-      redirect_to checklist_path(@checklist.form_id), danger: "Checklist not updated"
+      redirect_to checklist_path(@checklist.form_id), danger: @checklist.errors.full_messages.join('. ')
     end
   end
 
