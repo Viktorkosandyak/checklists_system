@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :answer do
     comment { "MyText" }
-    value { 1 }
+    significance { 1 }
+    question { nil }
+    checklist { nil }
   end
 end

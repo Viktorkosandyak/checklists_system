@@ -3,11 +3,9 @@ class CreateChecklists < ActiveRecord::Migration[5.2]
     create_table :checklists do |t|
       t.string :title
       t.text :description
-      t.integer :project_id
-      t.integer :questiom_count
-      t.string :status
+      t.string :project_uid
       t.datetime :date
-      t.references :user, index: true 
+      t.references :form, foreign_key: true
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_181801) do
+ActiveRecord::Schema.define(version: 2019_06_22_124619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2019_06_19_181801) do
   create_table "answers", force: :cascade do |t|
     t.text "comment"
     t.integer "significance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "question_id"
     t.bigint "checklist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["checklist_id"], name: "index_answers_on_checklist_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2019_06_19_181801) do
   create_table "checklists", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.string "project_uid"
     t.datetime "date"
+    t.bigint "form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "project_uid"
-    t.bigint "form_id"
     t.index ["form_id"], name: "index_checklists_on_form_id"
   end
 
@@ -42,18 +42,18 @@ ActiveRecord::Schema.define(version: 2019_06_19_181801) do
     t.text "description"
     t.integer "status"
     t.datetime "date"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_forms_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text "title"
+    t.string "title"
     t.text "description"
+    t.bigint "form_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "form_id"
     t.index ["form_id"], name: "index_questions_on_form_id"
   end
 

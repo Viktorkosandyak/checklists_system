@@ -5,6 +5,7 @@ class CreateForms < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :status
       t.datetime :date
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

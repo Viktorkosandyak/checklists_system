@@ -1,11 +1,9 @@
 class CreateQuestions < ActiveRecord::Migration[5.2]
   def change
     create_table :questions do |t|
-      t.text :question
+      t.string :title
       t.text :description
-      t.string :answer
-      t.text :comment
-      t.references :checklist, index: true
+      t.references :form, foreign_key: true
 
       t.timestamps
     end

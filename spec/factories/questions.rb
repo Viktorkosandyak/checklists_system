@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :question do
-    title  { Faker::Name.name }
-    description { Faker::Lorem.paragraph }
-    checklist_id  {  FactoryBot.create(:checklist).id }
+    title { "MyString" }
+    description { "MyText" }
+    form { nil }
   end
 end
