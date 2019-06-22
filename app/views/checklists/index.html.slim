@@ -2,6 +2,7 @@
   .col-lg-12.d-flex.justify-content-center
     .row
       .col-lg-12
+        = render 'modal_view'
         table.table-bordered
           thead
             tr
@@ -26,3 +27,5 @@
                   ul.navbar-nav.mr-auto
                     li.nav-item
                       a.nav-link  = link_to 'Fill checklist', checklist_path(form.id), class: 'btn btn-danger'
+                    li.nav-item
+                      a.nav-link  = link_to 'Fill New checklist', new_checklist_path(id: form.id), class: 'btn btn-danger'

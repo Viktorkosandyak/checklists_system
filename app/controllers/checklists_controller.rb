@@ -12,6 +12,12 @@ class ChecklistsController < ApplicationController
     @checklist.answers.build
   end
 
+  def new
+    @form = Form.find(params[:id])
+    @checklist = Checklist.new
+    @checklist.answers.build
+  end
+
   def create
     @checklist = Checklist.new(checklist_params)
     if @checklist.save
