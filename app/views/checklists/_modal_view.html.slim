@@ -8,8 +8,12 @@ button.btn.btn-primary.ml-2.mb-4 data-target="#exampleModalCenter" data-toggle="
         button.close aria-label="Close" data-dismiss="modal" type="button"
           span aria-hidden="true"  ×
       .modal-body.d-flex.justify-content-center
-        .col-md-3.h6 Select Checklist to fill
-        .col-md-8 = select("form", "form_id", forming_select)
+        .dropdown.show
+          a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            | Select Checklist
+          ul.dropdown-menu aria-labelledby="dropdownMenuLink"
+            - @forms.each do |form|
+              li.dropdown-item
+                a.nav-link  = link_to form.title, new_checklist_path(id: form.id)
       .modal-footer
         button.btn.btn-secondary data-dismiss="modal" type="button"  Cancel
-        = link_to 'Fill New checklist', new_checklist_path(id: forming_select[0][1]), class: 'btn btn-danger'
