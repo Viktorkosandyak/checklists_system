@@ -10,6 +10,7 @@
           = f.hidden_field :title,       value: @form.title
           = f.hidden_field :description, value: @form.description
           = f.hidden_field :form_id,     value: @form.id
+          = f.hidden_field :user_id,     value: current_user.id
           - @form.questions.each do |question|
             = f.simple_fields_for :answers do |p|
               = p.hidden_field :question_id, value: question.id

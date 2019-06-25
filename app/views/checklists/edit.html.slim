@@ -1,0 +1,17 @@
+.col-lg-12.mt-5.ml-5
+  .row.justify-content-center
+    .conatiner
+      h1.d-flex.justify-content-center Edit Checklist
+      h3.d-flex.justify-content-center = @checklist.title
+      br
+      h5.d-flex.justify-content-center = @checklist.description
+      br
+        = simple_form_for @checklist, method: :patch do |f|
+          - @form.questions.each do |question|
+            = f.simple_fields_for :answers do |p|
+              = p.hidden_field :question_id, value: question.id
+              .d-flex.justify-content-center = p question.title
+              = p.input :significance, :as => :select, :collection => Answer.significances.keys, label: question.description
+              = p.input :comment, required: true, error: 'comment is mandatory, must be at least 12 characters'
+          = link_to 'back', checklists_path, data: { confirm: 'Unsaved changes will be deleted. Are you sure?' } ,  class: 'btn btn-secondary  mb-3 '
+          = f.submit 'Save',  class: 'btn btn-success ml-3 mb-3'

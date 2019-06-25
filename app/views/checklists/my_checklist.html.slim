@@ -2,14 +2,11 @@
   .col-lg-12.d-flex.justify-content-center
     .row
       .col-lg-12
-        = render 'modal_view'
         table.table-bordered
           thead
             tr
               th[scope="col"]
-                | Project
-              th[scope="col"]
-                | Checklist
+                | My Checklists
               th[scope="col"]
                 | Updated
               th[scope="col"]
@@ -17,13 +14,15 @@
               th[scope="col"]
                 | Actions
           tbody
-            - @forms.each.with_index(1) do |form, i|
+            - current_user.checklists.each.with_index(1) do |checklist, i|
               tr
-                td  PRG1
-                td = form.title
+                td = checklist.title
                 td = Date.today.to_s.to_date
                 td.chartik = bar_chart  Answer.group(:significance).count, height: "100px"
                 td
                   ul.navbar-nav.mr-auto
                     li.nav-item
-                      a.nav-link  = link_to 'Show', checklist_path(form.id), class: 'btn btn-danger'
+                      a.nav-link  = link_to 'Edit', edit_checklist_path(checklist.id), class: 'btn btn-success'
+                    li.nav-item
+                      a.nav-link  = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
+                    data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'

@@ -18,4 +18,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :forms
+  has_many :checklists
 end

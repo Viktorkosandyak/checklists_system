@@ -12,3 +12,4 @@
       - @form.questions.each do |question|
           h3.d-flex.justify-content-center.form-quest = p question.title
           h5.d-flex.justify-content-center.form-quest = p question.description
+      = link_to 'back', checklists_path, class: 'btn btn-secondary'

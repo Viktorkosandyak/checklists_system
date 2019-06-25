@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :forms
   end
 
+  get 'checklists/my_checklist'
   resources :checklists
   devise_for :users
   root to: "checklists#index"

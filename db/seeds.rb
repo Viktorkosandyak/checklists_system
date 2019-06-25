@@ -5,12 +5,12 @@ User.create(email: 'admin@gmail.com', password: 'Admin1234!', password_confirmat
 end
 
 10.times do
-  Form.create!(title: Faker::Company.industry, description: Faker::Lorem.paragraph, status: 'published')
+  Form.create!(title: Faker::Company.industry, description: Faker::Lorem.paragraph, status: 'published', user_id: User.all.ids.sample)
 end
 
-10.times do
-  Checklist.create!(title: Faker::Company.industry, description: Faker::Lorem.paragraph, project_uid: Faker::Invoice.creditor_reference,form_id: Form.all.ids.sample)
-end
+# 5.times do
+#   Checklist.create!(title: Faker::Company.industry, description: Faker::Lorem.paragraph, project_uid: Faker::Invoice.creditor_reference,form_id: Form.all.ids.sample, user_id: User.all.ids.sample)
+# end
 
 10.times do
   Question.create!(title: Faker::Name.name, description: Faker::Lorem.paragraph, form_id: Form.all.ids.sample)
