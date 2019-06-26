@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :forms
   end
 
-  resources :checklists, except: [:index, :edit, :update]
+  resources :checklists, except: [:edit, :update]
   devise_for :users
   root to: "checklists#index"
 end

@@ -9,7 +9,7 @@
         = render 'layouts/error_messages', form_object: @checklist
         = simple_form_for @checklist, method: :patch, url: personal_checklist_path do |f|
           - @form.questions.each do |question|
-            = f.simple_fields_for :answers do |p|
+            = f.simple_fields_for :answers, question.answers.first do |p|
               = p.hidden_field :question_id, value: question.id
               .d-flex.justify-content-center = p question.title
               = p.input :significance, :as => :select, :collection => Answer.significances.keys, label: question.description
