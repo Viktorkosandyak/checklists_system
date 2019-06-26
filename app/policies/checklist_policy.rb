@@ -30,5 +30,4 @@ class ChecklistPolicy < ApplicationPolicy
   def set_published?
     user.admin?
   end
-
 end

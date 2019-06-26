@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  resources :personal_checklists, only: [:index, :edit, :update]
+  resources :personal_checklists, only: %i[index edit update]
 
   namespace :admin do
     get 'forms/set_published'
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
     resources :forms
   end
 
-  resources :checklists, except: [:edit, :update]
+  resources :checklists, except: %i[edit update]
   devise_for :users
-  root to: "checklists#index"
+  root to: 'checklists#index'
 end

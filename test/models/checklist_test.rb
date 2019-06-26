@@ -2,15 +2,15 @@
 #
 # Table name: checklists
 #
-#  id             :bigint           not null, primary key
-#  title          :string
-#  description    :text
-#  questiom_count :integer
-#  status         :string
-#  date           :datetime
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  project        :string
+#  id          :bigint           not null, primary key
+#  title       :string
+#  description :text
+#  project_uid :string
+#  date        :datetime
+#  form_id     :bigint
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint
 #
 
 require 'test_helper'

@@ -30,5 +30,4 @@ class FormPolicy < ApplicationPolicy
   def set_published?
     user.admin?
   end
-
 end

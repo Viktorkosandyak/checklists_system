@@ -5,6 +5,7 @@ AllCops:
     - 'db/migrate/*.rb'
     - 'config/initializers/devise.rb'
     - 'db/seeds.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
 Style/Documentation:
   Enabled: false

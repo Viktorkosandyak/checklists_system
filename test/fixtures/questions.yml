@@ -3,10 +3,9 @@
 # Table name: questions
 #
 #  id          :bigint           not null, primary key
-#  question    :text
+#  title       :string
 #  description :text
-#  answer      :string
-#  comment     :text
+#  form_id     :bigint
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
