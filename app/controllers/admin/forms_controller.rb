@@ -9,7 +9,7 @@ class Admin::FormsController < Admin::ApplicationController
   end
 
   def index
-    @forms  = Form.all
+    @forms  = Form.all.order(created_at: :desc)
   end
 
   def show

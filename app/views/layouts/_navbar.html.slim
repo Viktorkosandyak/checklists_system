@@ -6,7 +6,7 @@ nav.navbar.navbar-expand-lg.navbar-light.us
     ul.nav.navbar-nav.navigation
       li = link_to('Field Checklists', root_path)
       li = link_to('Configure Checklists', admin_root_path)
-      li = link_to('My Checklists',  checklists_my_checklist_path)
+      li = link_to('My Checklists',  personal_checklists_path)
   ul.nav.navbar-nav.navigation
     - if user_signed_in?
       li.nav-item

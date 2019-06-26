@@ -6,7 +6,8 @@
       br
       h5.d-flex.justify-content-center = @checklist.description
       br
-        = simple_form_for @checklist, method: :patch do |f|
+        = render 'layouts/error_messages', form_object: @checklist
+        = simple_form_for @checklist, method: :patch, url: personal_checklist_path do |f|
           - @form.questions.each do |question|
             = f.simple_fields_for :answers do |p|
               = p.hidden_field :question_id, value: question.id

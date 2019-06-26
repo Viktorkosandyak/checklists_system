@@ -12,7 +12,7 @@ nav.navbar.navbar-expand-lg.navbar-light.us {
 
 }
 
-ul.nav.navbar-nav.navigation li{
+ul.nav.navbar-nav.navigation li {
   padding-left: 15px;
 }
 
@@ -64,4 +64,18 @@ td.chartik {
 .form-quest {
   font-family: serif;
   font-style: italic;
+}
+
+li.dropdown-item {
+                  &:hover {
+                    background-color: #585858;
+                  }
+}
+
+a.a-link {
+  color: black;
+                &:hover {
+                  color: red;
+                  text-decoration: none;
+                }
 }

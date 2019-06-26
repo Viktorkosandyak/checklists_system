@@ -1,4 +1,4 @@
-button.btn.btn-primary.ml-2.mb-4 data-target="#exampleModalCenter" data-toggle="modal" type="button"
+button.btn.btn-secondary.ml-2.mb-4 data-target="#exampleModalCenter" data-toggle="modal" type="button"
   | Fill Checklist
 #exampleModalCenter.modal.fade aria-hidden="true" aria-labelledby="exampleModalCenterTitle" role="dialog" tabindex="-1"
   .modal-dialog.modal-lg.modal-dialog-centered role="document"
@@ -14,6 +14,6 @@ button.btn.btn-primary.ml-2.mb-4 data-target="#exampleModalCenter" data-toggle="
           ul.dropdown-menu aria-labelledby="dropdownMenuLink"
             - @forms.each do |form|
               li.dropdown-item
-                a.nav-link  = link_to form.title, new_checklist_path(id: form.id)
+                = link_to form.title, new_checklist_path(id: form.id), class: 'a-link'
       .modal-footer
         button.btn.btn-secondary data-dismiss="modal" type="button"  Cancel

@@ -21,8 +21,8 @@
                 td.chartik = bar_chart  Answer.group(:significance).count, height: "100px"
                 td
                   ul.navbar-nav.mr-auto
-                    li.nav-item
-                      a.nav-link  = link_to 'Edit', edit_checklist_path(checklist.id), class: 'btn btn-success'
-                    li.nav-item
-                      a.nav-link  = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
+                    li.m-1
+                      = link_to 'Edit', edit_personal_checklist_path(checklist.id), class: 'btn btn-success'
+                    li.m-1
+                      = link_to 'delete', checklist_path(checklist.id), method: :delete,                                            \
                     data: { confirm: 'Are you sure?' } ,  class: 'btn btn-danger'

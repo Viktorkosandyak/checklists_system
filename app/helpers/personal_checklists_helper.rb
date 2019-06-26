@@ -1,0 +1,2 @@
+module PersonalChecklistsHelper
+end

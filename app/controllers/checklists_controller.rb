@@ -2,7 +2,7 @@ class ChecklistsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @forms  = Form.all
+    @forms  = Form.all.order(created_at: :desc)
     @checklists = Checklist.published
   end
 
@@ -25,32 +25,11 @@ class ChecklistsController < ApplicationController
     end
   end
 
-  def edit
-    @checklist = Checklist.find(params[:id])
-    @forms  = Form.all
-    @form = @forms.find(Checklist.find(params[:id]).form_id)
-    @checklist.answers.build
-  end
-
-  def update
-    @checklist = Checklist.find(params[:id])
-    if @checklist.update(checklist_params)
-      redirect_to checklists_my_checklist_path, success: "Checklist successfully update!!!!!!"
-    else
-      render 'edit', danger: "Checklist not updated"
-    end
-  end
-
   def destroy
     @checklist = Checklist.find(params[:id])
     @checklist.destroy
-    redirect_to checklists_my_checklist_path, danger: "Checklist successfully delete"
+    redirect_to personal_checklists_path, danger: "Checklist successfully delete"
   end
-
-  def my_checklist
-    current_user.checklists
-  end
-
 
   private
 
