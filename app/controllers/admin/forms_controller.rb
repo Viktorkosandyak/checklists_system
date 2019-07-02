@@ -38,12 +38,6 @@ class Admin::FormsController < Admin::ApplicationController
     redirect_to admin_forms_path, danger: 'Form successfully delete'
   end
 
-  def set_published
-    @form = Form.find(params[:id])
-    @form.update_attributes(status: 'published')
-    redirect_to admin_forms_path, success: 'Form status successfully published'
-  end
-
   private
 
   def authorize_policy

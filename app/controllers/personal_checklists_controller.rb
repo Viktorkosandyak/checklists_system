@@ -1,4 +1,7 @@
 class PersonalChecklistsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_policy
+
   def index
     current_user.checklists
   end
@@ -15,12 +18,16 @@ class PersonalChecklistsController < ApplicationController
       redirect_to personal_checklists_path, success:
       'Checklist successfully update!!!!!!'
     else
-      redirect_to personal_checklists_path, danger:
+      redirect_to  edit_personal_checklist_path(@checklist.id), danger:
       @checklist.errors.full_messages.join('. ')
     end
   end
 
   private
+
+  def authorize_policy
+    authorize Checklist
+  end
 
   def checklist_params
     params.require(:checklist).permit(answers_attributes:

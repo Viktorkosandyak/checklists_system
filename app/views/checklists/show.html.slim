@@ -3,13 +3,19 @@
     .conatiner
       h1.d-flex.justify-content-center Checklist
       br
+      br
       .d-flex.justify-content-center.form-tit = @form.title
       .d-flex.justify-content-center.form-desc = @form.description
       br
       br
-      h1.d-flex.justify-content-center Question
       br
+      h2.d-flex.justify-content-center Question:
       - @form.questions.each do |question|
+          br
           h3.d-flex.justify-content-center.form-quest = p question.title
           h5.d-flex.justify-content-center.form-quest = p question.description
+          br
+          - if question.answers.first.present?
+            h5.d-flex.justify-content-center.form-quest = p  question.answers.first.significance
+            h5.d-flex.justify-content-center.form-quest = p  question.answers.first.comment
       = link_to 'back', checklists_path, class: 'btn btn-secondary'

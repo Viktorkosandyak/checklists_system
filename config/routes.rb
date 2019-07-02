@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :personal_checklists, only: %i[index edit update]
 
   namespace :admin do
-    get 'forms/set_published'
+    namespace :forms do
+      get 'publish/publisheding'
+    end
     root to: 'forms#index'
     resources :forms
   end

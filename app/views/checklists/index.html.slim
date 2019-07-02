@@ -14,8 +14,9 @@
                 | Updated
               th[scope="col"]
                 | Questions
-              th[scope="col"]
-                | Actions
+              -if current_user.admin == true
+                th[scope="col"]
+                  | Actions
           tbody
             - @forms.each.with_index(1) do |form, i|
               tr
@@ -23,7 +24,8 @@
                 td = form.title
                 td = Date.today.to_s.to_date
                 td.chartik = bar_chart  Answer.group(:significance).count, height: "100px"
-                td
-                  ul.navbar-nav.mr-auto
-                    li.nav-item
-                      a.nav-link  = link_to 'Show', checklist_path(form.id), class: 'btn btn-secondary'
+                -if current_user.admin == true
+                  td
+                    ul.navbar-nav.mr-auto
+                      li.nav-item
+                        a.nav-link  = link_to 'Show', checklist_path(form.id), class: 'btn btn-secondary'

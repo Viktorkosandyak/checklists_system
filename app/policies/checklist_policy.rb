@@ -1,6 +1,7 @@
 class ChecklistPolicy < ApplicationPolicy
+
   def index?
-    user.admin?
+    user.present?
   end
 
   def show?
@@ -8,26 +9,23 @@ class ChecklistPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    user.present?
   end
 
   def new?
-    user.admin?
+    user.present?
   end
 
   def update?
-    user.admin?
+    user.present?
   end
 
   def edit?
-    update?
+    user.present?
   end
 
   def destroy?
-    user.admin?
+    user.present?
   end
 
-  def set_published?
-    user.admin?
-  end
 end

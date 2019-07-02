@@ -27,7 +27,7 @@ class FormPolicy < ApplicationPolicy
     user.admin?
   end
 
-  def set_published?
+  def publisheding?
     user.admin?
   end
 end
