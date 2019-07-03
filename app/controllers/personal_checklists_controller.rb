@@ -15,8 +15,8 @@ class PersonalChecklistsController < ApplicationController
   def update
     @checklist = Checklist.find(params[:id])
     if @checklist.update(checklist_params)
-      redirect_to personal_checklists_path, success:
-      'Checklist successfully update!!!!!!'
+      redirect_to personal_checklists_path, success: t('checklist_update')
+
     else
       redirect_to  edit_personal_checklist_path(@checklist.id), danger:
       @checklist.errors.full_messages.join('. ')

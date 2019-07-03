@@ -20,7 +20,7 @@ class ChecklistsController < ApplicationController
   def create
     @checklist = Checklist.new(checklist_params)
     if @checklist.save
-      redirect_to checklists_path, success: 'Checklist successfully fillinged'
+      redirect_to checklists_path, success: t('checklist_create')
     else
       redirect_to new_checklist_path(id: @checklist.form_id), danger:
       @checklist.errors.full_messages.join('. ')
@@ -30,8 +30,7 @@ class ChecklistsController < ApplicationController
   def destroy
     @checklist = Checklist.find(params[:id])
     @checklist.destroy
-    redirect_to personal_checklists_path, danger:
-    'Checklist successfully delete'
+    redirect_to personal_checklists_path, danger: t('checklist_delete')
   end
 
   private

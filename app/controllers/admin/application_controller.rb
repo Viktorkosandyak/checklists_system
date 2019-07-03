@@ -12,7 +12,7 @@ class Admin::ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    flash[:alert] = "You don't have  permissions to perform this action."
+    flash[:alert] = t('pundit_permition')
     redirect_to(request.referrer || root_path)
   end
 end

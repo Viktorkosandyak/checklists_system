@@ -5,7 +5,7 @@ class Admin::Forms::PublishController < Admin::ApplicationController
   def publisheding
     @form = Form.find(params[:id])
     @form.update_attributes(status: 'published')
-    redirect_to admin_forms_path, success: 'Form status successfully published'
+    redirect_to admin_forms_path, success: t('form_status_p')
   end
 
   private

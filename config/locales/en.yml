@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  pundit_permition: "You don't have permissions to perform this action"
+  checklist_create: "Checklist successfully fillinged"
+  checklist_delete: "Checklist successfully delete"
+  checklist_update: "Checklist successfully update"
+  form_create: "Form successfully create"
+  form_update: "Form successfully update"
+  form_delete: "Form successfully delete"
+  form_status_p: "Form status successfully published"

@@ -5,8 +5,8 @@ nav.navbar.navbar-expand-lg.navbar-light.us
   ul.nav.navbar-nav.navigation.d-flex.justify-content-left
     - if user_signed_in?
       li.nav-item
-       li = link_to('All Checklists', root_path)
-       li = link_to('My Checklists',  personal_checklists_path)
+       li = link_to('Field Checklists', root_path)
+       li = link_to('Configure Checklists',  personal_checklists_path)
        li = link_to('Admin', admin_root_path) if current_user.admin == true
        li = link_to('Logout', destroy_user_session_path, method: :delete)
        li = link_to current_user.email, edit_user_registration_path

@@ -17,7 +17,7 @@ class Admin::FormsController < Admin::ApplicationController
   def create
     @form = Form.new(form_params)
     if @form.save
-      redirect_to admin_forms_path, success: 'Form successfully create'
+      redirect_to admin_forms_path, success: t('form_create')
     else
       render 'new', danger: 'Form not updated'
     end
@@ -27,7 +27,7 @@ class Admin::FormsController < Admin::ApplicationController
 
   def update
     if @form.update(form_params)
-      redirect_to admin_form_path(@form.id), success: 'Form successfully update'
+      redirect_to admin_form_path(@form.id), success: t('form_update')
     else
       render 'edit', danger: 'Form not updated'
     end
@@ -35,9 +35,8 @@ class Admin::FormsController < Admin::ApplicationController
 
   def destroy
     @form.destroy
-    redirect_to admin_forms_path, danger: 'Form successfully delete'
+    redirect_to admin_forms_path, danger: t('form_delete')
   end
-
   private
 
   def authorize_policy
@@ -51,4 +50,5 @@ class Admin::FormsController < Admin::ApplicationController
   def set_form
     @form = Form.find(params[:id])
   end
+
 end
