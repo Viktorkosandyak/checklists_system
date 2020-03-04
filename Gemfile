@@ -14,7 +14,7 @@ gem 'faker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'pundit'
 gem 'rails', '~> 5.2.3'
 gem 'rubocop', '~> 0.60.0', require: false
